@@ -14,5 +14,6 @@
         enabled: true
     - name: Déploiement site web
       git:
-        - https://github.com/cloudacademy/static-website-example.git
+        repo: https://github.com/cloudacademy/static-website-example.git
+        dest: /var/www/html/aca
     
