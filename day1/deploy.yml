@@ -1,4 +1,8 @@
-- name: Déploiement site web
+- hosts: all
+  become: true
+  user: vagrant 
+  tasks:
+    - name: Déploiement site web
       git:
         repo: https://github.com/cloudacademy/static-website-example.git
         dest: /var/www/html/website
