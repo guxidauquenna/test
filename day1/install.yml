@@ -5,12 +5,12 @@
 
     - name: install apache2 pour debian
       package:
-        name: apache2
+        name: "{{ webserver }}"
       when: ansible_os_family == 'Debian' 
 
     - name: install httpd pour centos
       package:
-        name: httpd
+        name: "{{ webserver }}"
       when: ansible_os_family == 'RedHat'
 
     - name: Installer quelques dépendances 
