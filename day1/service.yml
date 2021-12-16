@@ -1,0 +1,13 @@
+- name: Démarrage du service
+      service:
+        name: apache2
+        state: started
+        enabled: true
+      when: ansible_os_family == 'Debian'
+
+    - name: Démarrage du service
+      service:
+        name: httpd
+        state: started
+        enabled: true
+      when: ansible_os_family == 'RedHat'
