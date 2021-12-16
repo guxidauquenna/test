@@ -1,17 +1,31 @@
 - hosts: all
-  vars:
-    webserver: apache2
+- name: install apache2 pour debian
+      package:
+        name: apache2
+      when: ansible_os_family == 'Debian' 
+
+    - name: install httpd pour centos
+      package:
+        name: httpd
+      when: ansible_os_family == 'RedHat'
   tasks:
-    - name: Install apache + git
+    - name: git
       package:
         name:
-          - "{{webserver}}"
           - git
-    - name: Démarage du service
+    - name: Démarrage du service
       service:
-        name: "{{webserver}}"
+        name: apache2
         state: started
         enabled: true
+      when: ansible_os_family == 'Debian'
+
+    - name: Démarrage du service
+      service:
+        name: httpd
+        state: started
+        enabled: true
+      when: ansible_os_family == 'RedHat'
     - name: Déploiement site web
       git:
         repo: https://github.com/cloudacademy/static-website-example.git
