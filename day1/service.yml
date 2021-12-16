@@ -4,14 +4,14 @@
   tasks:
     - name: Démarrage du service
       service:
-        name: {{ webserver }}
+        name: "{{ webserver }}"
         state: started
         enabled: true
       when: ansible_os_family == 'Debian'
 
     - name: Démarrage du service
       service:
-        name: {{ webserver }}
+        name: "{{ webserver }}"
         state: started
         enabled: true
       when: ansible_os_family == 'RedHat'
