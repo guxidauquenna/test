@@ -1,5 +1,9 @@
 - hosts: all
-- name: install apache2 pour debian
+  become: true
+  user: vagrant 
+  tasks:
+
+    - name: install apache2 pour debian
       package:
         name: apache2
       when: ansible_os_family == 'Debian' 
@@ -8,11 +12,12 @@
       package:
         name: httpd
       when: ansible_os_family == 'RedHat'
-  tasks:
-    - name: git
+
+    - name: Installer quelques dépendances 
       package:
-        name:
+        name: 
           - git
+
     - name: Démarrage du service
       service:
         name: apache2
@@ -26,8 +31,10 @@
         state: started
         enabled: true
       when: ansible_os_family == 'RedHat'
+
     - name: Déploiement site web
       git:
         repo: https://github.com/cloudacademy/static-website-example.git
-        dest: /var/www/html/aca
-    
+        dest: /var/www/html/website
+
+    - reboot:
