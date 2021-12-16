@@ -1,5 +1,18 @@
-
-- name: Install apache
-  ansible.builtin.package:
-    name: apache
-    state: present
+- hosts: all
+  vars:
+    webserver: apache2
+  tasks:
+    - name: Install apache + git
+      package:
+        name:
+          - "{{webserver}}"
+          - git
+    - name: Démarage du service
+      service:
+        name: "{{webserver}}"
+        state: started
+        enabled: true
+    - name: Déploiement site web
+      git:
+        - https://github.com/cloudacademy/static-website-example.git
+    
