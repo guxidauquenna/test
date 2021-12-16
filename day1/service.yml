@@ -1,4 +1,8 @@
-- name: Démarrage du service
+- hosts: all
+  become: true
+  user: vagrant 
+  tasks:
+    - name: Démarrage du service
       service:
         name: apache2
         state: started
