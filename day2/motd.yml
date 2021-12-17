@@ -2,6 +2,9 @@
   become: true
   user: vagrant 
   tasks:
+    - debug:
+        var: ansible_facts
+    
     - name: Template a file to /etc/motd
       ansible.builtin.template:
         src: /day2/motd.tpl
