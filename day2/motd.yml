@@ -7,5 +7,5 @@
     
     - name: Template a file to /etc/motd
       ansible.builtin.template:
-        src: /day2/motd.tpl
+        src: motd.tpl
         dest: /etc/motd
