@@ -1,4 +1,4 @@
-- hosts: all
-  tasks:
-    - debug:
-        var: ansible_facts
+---------------------------------------
+Bienvenue sur {{ ansible_ssh_host }}
+OS : {{ ansible_distribution }}
+---------------------------------------
